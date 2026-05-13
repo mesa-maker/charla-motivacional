@@ -1,10 +1,15 @@
-<!DOCTYPE html><html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Carrera no es un Tatuaje - Historia Vocacional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -15,7 +20,7 @@
 
         body {
             background-color: #050505;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 255, 255, 0.07) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.07) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -31,7 +36,10 @@
         body::after {
             content: '';
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background: radial-gradient(circle at center, transparent 30%, #000 100%);
             pointer-events: none;
             z-index: 0;
@@ -43,7 +51,7 @@
             backdrop-filter: blur(5px);
             border: 2px solid rgba(0, 255, 255, 0.4);
             border-radius: 4px;
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(0, 255, 255, 0.15),
                 inset 0 0 30px rgba(0, 255, 255, 0.05);
             display: flex;
@@ -63,7 +71,10 @@
         .slide-container::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             box-shadow: inset 0 0 100px rgba(0, 255, 255, 0.05);
             pointer-events: none;
             z-index: 0;
@@ -76,12 +87,15 @@
             z-index: 10;
         }
 
-        .slide-container > * {
+        .slide-container>* {
             position: relative;
             z-index: 1;
         }
 
-        h1, h2, h3, .quote-text {
+        h1,
+        h2,
+        h3,
+        .quote-text {
             font-family: 'Orbitron', sans-serif;
             color: #e0faff;
             margin: 0;
@@ -90,7 +104,9 @@
             letter-spacing: 2px;
         }
 
-        p, li, .subtitle {
+        p,
+        li,
+        .subtitle {
             font-family: 'Space Grotesk', sans-serif;
             color: #a0d8e0;
             line-height: 1.6;
@@ -123,7 +139,10 @@
             text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
         }
 
-        p, li { font-size: 20px; }
+        p,
+        li {
+            font-size: 20px;
+        }
 
         .subtitle {
             font-size: 24px;
@@ -151,20 +170,25 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 140, 0, 0.05);
             position: relative;
         }
-        
+
         .moral-box::before {
             content: '';
             position: absolute;
-            top: -1px; right: -1px;
-            width: 10px; height: 10px;
+            top: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
             border-top: 2px solid #0ff;
             border-right: 2px solid #0ff;
         }
+
         .moral-box::after {
             content: '';
             position: absolute;
-            bottom: -1px; right: -1px;
-            width: 10px; height: 10px;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
             border-bottom: 2px solid #0ff;
             border-right: 2px solid #0ff;
         }
@@ -175,7 +199,7 @@
             margin: 0;
             font-size: 20px;
         }
-        
+
         .moral-box span {
             color: #ff8c00;
             font-family: 'Orbitron', sans-serif;
@@ -236,7 +260,8 @@
         /* CONTENEDOR ESTÁNDAR PARA IMÁGENES (Evita recortes) */
         .image-wrapper {
             border-radius: 2px;
-            height: 400px; /* Alto fijo del contenedor */
+            height: 400px;
+            /* Alto fijo del contenedor */
             width: 100%;
             position: relative;
             border: 1px solid rgba(0, 255, 255, 0.5);
@@ -245,14 +270,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Fondo por si quedan espacios */
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Fondo por si quedan espacios */
             overflow: hidden;
         }
 
         .image-wrapper img {
             max-height: 100%;
             max-width: 100%;
-            object-fit: contain; /* ENCOGE LA IMAGEN PARA QUE QUEPA COMPLETA */
+            object-fit: contain;
+            /* ENCOGE LA IMAGEN PARA QUE QUEPA COMPLETA */
             display: block;
             filter: grayscale(40%) contrast(120%) brightness(0.8);
             mix-blend-mode: screen;
@@ -261,8 +288,11 @@
         .image-wrapper::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
                 linear-gradient(rgba(0, 255, 255, 0.1) 2px, transparent 2px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.1) 2px, transparent 2px);
             background-size: 4px 4px;
@@ -278,7 +308,7 @@
             padding: 0;
         }
 
-        .slide-container.bleed-image-layout > .content-container {
+        .slide-container.bleed-image-layout>.content-container {
             padding: 60px 0 60px 60px;
             display: flex;
             flex-direction: column;
@@ -287,7 +317,7 @@
         }
 
         /* CONTENEDOR SANGRADO PARA IMÁGENES GRANDES */
-        .slide-container.bleed-image-layout > .image-container {
+        .slide-container.bleed-image-layout>.image-container {
             height: 100%;
             width: 100%;
             position: relative;
@@ -303,15 +333,19 @@
             display: block;
             max-height: 720px;
             max-width: 100%;
-            object-fit: contain; /* ENCOGE LA IMAGEN PARA QUE QUEPA COMPLETA */
+            object-fit: contain;
+            /* ENCOGE LA IMAGEN PARA QUE QUEPA COMPLETA */
             filter: grayscale(40%) contrast(120%) brightness(0.8);
         }
-        
+
         .image-container::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(5,5,5,1) 0%, rgba(0,255,255,0.1) 100%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(5, 5, 5, 1) 0%, rgba(0, 255, 255, 0.1) 100%);
             pointer-events: none;
             mix-blend-mode: overlay;
         }
@@ -346,12 +380,18 @@
         .tile::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background: linear-gradient(90deg, transparent, #0ff, transparent);
             opacity: 0;
             transition: opacity 0.3s;
         }
-        .tile:hover::before { opacity: 1; }
+
+        .tile:hover::before {
+            opacity: 1;
+        }
 
         .tile .icon {
             color: #0ff;
@@ -373,7 +413,8 @@
             position: relative;
         }
 
-        .quote-layout::before, .quote-layout::after {
+        .quote-layout::before,
+        .quote-layout::after {
             content: '\"';
             font-family: 'Orbitron', sans-serif;
             position: absolute;
@@ -381,8 +422,17 @@
             font-size: 120px;
             line-height: 1;
         }
-        .quote-layout::before { top: -20px; left: 20px; }
-        .quote-layout::after { bottom: -60px; right: 20px; transform: rotate(180deg); }
+
+        .quote-layout::before {
+            top: -20px;
+            left: 20px;
+        }
+
+        .quote-layout::after {
+            bottom: -60px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
 
         .quote-layout blockquote {
             color: #e0faff;
@@ -437,7 +487,9 @@
             transition: all 0.3s;
         }
 
-        .gemini-input::placeholder { color: rgba(0, 255, 255, 0.4); }
+        .gemini-input::placeholder {
+            color: rgba(0, 255, 255, 0.4);
+        }
 
         .gemini-input:focus {
             outline: none;
@@ -450,7 +502,8 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            height: 48px; /* Altura fija para que no brinque al cambiar botones */
+            height: 48px;
+            /* Altura fija para que no brinque al cambiar botones */
         }
 
         .gemini-btn {
@@ -472,7 +525,7 @@
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
         }
 
-        .gemini-btn:hover { 
+        .gemini-btn:hover {
             background: #0ff;
             color: #000;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
@@ -492,7 +545,8 @@
             background: rgba(255, 140, 0, 0.1);
             color: #ff8c00;
             border-color: #ff8c00;
-            display: none; /* Oculto por defecto */
+            display: none;
+            /* Oculto por defecto */
             box-shadow: 0 0 10px rgba(255, 140, 0, 0.2), inset 0 0 10px rgba(255, 140, 0, 0.1);
         }
 
@@ -515,22 +569,27 @@
             border-left: 4px solid #0ff;
             border-radius: 2px;
             font-family: 'Space Grotesk', sans-serif;
-            max-height: 180px; /* Altura máxima para no desbordar */
-            overflow-y: auto; /* Scroll vertical activado */
+            max-height: 180px;
+            /* Altura máxima para no desbordar */
+            overflow-y: auto;
+            /* Scroll vertical activado */
         }
 
         /* Estilizar barra de scroll para que luzca Tron */
         .gemini-response::-webkit-scrollbar {
             width: 8px;
         }
+
         .gemini-response::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 4px;
         }
+
         .gemini-response::-webkit-scrollbar-thumb {
             background: rgba(0, 255, 255, 0.5);
             border-radius: 4px;
         }
+
         .gemini-response::-webkit-scrollbar-thumb:hover {
             background: #0ff;
         }
@@ -551,18 +610,58 @@
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
-        @keyframes spin { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes glitch-effect {
-            0% { opacity: 1; transform: translate(0); filter: hue-rotate(0deg); text-shadow: none; }
-            20% { opacity: 0.8; transform: translate(-4px, 2px); filter: hue-rotate(90deg); text-shadow: 2px 0 red, -2px 0 blue; }
-            40% { opacity: 0.4; transform: translate(4px, -2px); filter: hue-rotate(180deg); text-shadow: -2px 0 red, 2px 0 blue; }
-            60% { opacity: 0.9; transform: translate(-4px, -2px); filter: hue-rotate(270deg); text-shadow: 2px 0 red, -2px 0 blue; }
-            80% { opacity: 0.5; transform: translate(4px, 2px); filter: hue-rotate(360deg); text-shadow: -2px 0 red, 2px 0 blue; }
-            100% { opacity: 1; transform: translate(0); filter: hue-rotate(0deg); text-shadow: none; }
+            0% {
+                opacity: 1;
+                transform: translate(0);
+                filter: hue-rotate(0deg);
+                text-shadow: none;
+            }
+
+            20% {
+                opacity: 0.8;
+                transform: translate(-4px, 2px);
+                filter: hue-rotate(90deg);
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+
+            40% {
+                opacity: 0.4;
+                transform: translate(4px, -2px);
+                filter: hue-rotate(180deg);
+                text-shadow: -2px 0 red, 2px 0 blue;
+            }
+
+            60% {
+                opacity: 0.9;
+                transform: translate(-4px, -2px);
+                filter: hue-rotate(270deg);
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+
+            80% {
+                opacity: 0.5;
+                transform: translate(4px, 2px);
+                filter: hue-rotate(360deg);
+                text-shadow: -2px 0 red, 2px 0 blue;
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
+                filter: hue-rotate(0deg);
+                text-shadow: none;
+            }
         }
 
         .glitching {
@@ -574,7 +673,7 @@
             text-decoration: line-through;
             font-style: italic;
         }
-        
+
         .lang-tag {
             display: inline-block;
             background: transparent;
@@ -587,7 +686,7 @@
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
         }
-        
+
         .lang-tag.es {
             background: rgba(0, 255, 255, 0.1);
             color: #0ff;
@@ -609,399 +708,448 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="controls-hint"><i class="fa-solid fa-keyboard"></i> Use ⬅️ ➡️ to navigate</div>
+    <div class="controls-hint"><i class="fa-solid fa-keyboard"></i> Use ⬅️ ➡️ to navigate</div>
 
-<!-- Slide 1: Title Slide -->
-<div class="slide-container active" id="slide1">
-    <div class="title-layout" id="intro-title-container">
-        
+    <!-- Slide 1: Title Slide -->
+    <div class="slide-container active" id="slide1">
+        <div class="title-layout" id="intro-title-container">
 
-        <!-- Inicia en Inglés -->
-        <h1 id="main-title">Your Career <br> <span class="highlight">is not a Tattoo</span></h1>
-        <p class="subtitle" id="sub-title1" style="margin-top: 30px; font-size: 28px;">From Designing Furniture to Automating the Future.</p>
-        <p class="subtitle" id="sub-title2" style="margin-top: 15px; color: rgba(0, 255, 255, 0.6);">(And why your first college choice won't be your last).</p>
-        <p> </p>
-        <!-- Reemplaza con tu nombre -->
-        <p class="subtitle" style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; margin-bottom: 20px;">
-            <i class="fa-solid fa-user-astronaut"></i> ANDRÉS FELIPE MESA RIVERA
-        </p>
+
+            <!-- Inicia en Inglés -->
+            <h1 id="main-title">Your Career <br> <span class="highlight">is not a Tattoo</span></h1>
+            <p class="subtitle" id="sub-title1" style="margin-top: 30px; font-size: 28px;">From Designing Furniture to
+                Automating the Future.</p>
+            <p class="subtitle" id="sub-title2" style="margin-top: 15px; color: rgba(0, 255, 255, 0.6);">(And why your
+                first college choice won't be your last).</p>
+            <p> </p>
+            <!-- Reemplaza con tu nombre -->
+            <p class="subtitle"
+                style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; margin-bottom: 20px;">
+                <i class="fa-solid fa-user-astronaut"></i> ANDRÉS FELIPE MESA RIVERA
+            </p>
+        </div>
     </div>
-</div>
 
-<!-- Slide 2: El Origen -->
-<div class="slide-container" id="slide2">
-    <h2 class="slide-title">1. El Origen: <span class="highlight">La Base Técnica</span></h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>Empecé mi camino como tecnólogo en Diseño Industrial, haciendo prácticas en una fábrica de inyección de plásticos.</li>
-                    <li>Pasaba mis días entre máquinas ruidosas, moldes pesados y el olor a polímero derretido.</li>
-                    <li>Entender la física de los materiales y cómo se fabrica algo desde cero me dio una estructura mental invaluable.</li>
-                </ul>
-                <div class="moral-box">
-                    <span>Lección 01</span>
-                    <p>Aprender el "cómo" se hacen las cosas en el mundo físico te da la lógica y la disciplina para construir cualquier cosa en el futuro.</p>
+    <!-- Slide 2: El Origen -->
+    <div class="slide-container" id="slide2">
+        <h2 class="slide-title">1. El Origen: <span class="highlight">La Base Técnica</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Empecé mi camino como tecnólogo en Diseño Industrial, haciendo prácticas en una fábrica de
+                            inyección de plásticos.</li>
+                        <li>Pasaba mis días entre máquinas ruidosas, moldes pesados y el olor a polímero derretido.</li>
+                        <li>Entender la física de los materiales y cómo se fabrica algo desde cero me dio una estructura
+                            mental invaluable.</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 01</span>
+                        <p>Aprender el "cómo" se hacen las cosas en el mundo físico te da la lógica y la disciplina para
+                            construir cualquier cosa en el futuro.</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Puedes reemplazar este src por el nombre de tu foto en GitHub. Ej: src="fabrica.jpg" -->
-                    <img alt="Industrial Design" src="industrial_design.jpg">
+                <div>
+                    <div class="image-wrapper">
+                        <!-- Puedes reemplazar este src por el nombre de tu foto en GitHub. Ej: src="fabrica.jpg" -->
+                        <img alt="Industrial Design" src="industrial_design.jpg">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-<!-- Slide 4: El Quiebre -->
-<div class="slide-container" id="slide4">
-    <h2 class="slide-title">3. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
-                    <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
-                    <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente el mundo.</li>
-                </ul>
-                <div class="moral-box">
-                    <span>Lección 03</span>
-                    <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu estrategia operativa.</p>
-                </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
+    <!-- Slide 3: El Recorrido Simplificado -->
+    <div class="slide-container bleed-image-layout" id="slide3">
+        <div class="content-container">
+            <h2 class="slide-title" style="margin-bottom: 20px;">2. El Recorrido: <br><span class="highlight">Mundo
+                    Físico</span></h2>
+            <div class="content-area" style="align-items: flex-start; text-align: left;">
+                <p style="margin-bottom: 15px;">Después de los plásticos, mi carrera no fue una línea recta. Verifiqué
+                    dotaciones infantiles (viendo el impacto humano), aguanté el ruido y las chispas de una
+                    metalmecánica, y aseguré la calidad de muebles de lujo en Medellín.</p>
+                <p style="margin-bottom: 30px;">Parecen mundos distintos, pero todos me enseñaron a resolver problemas
+                    reales bajo mucha presión.</p>
+                <div class="moral-box" style="margin-top: 10px; width: 100%;">
+                    <span>Lección 02</span>
+                    <p>El "éxito lineal" es un mito. Cada industria, por dura o lejana que parezca, forja tu carácter y
+                        te da un criterio de calidad que te servirá para siempre.</p>
                 </div>
             </div>
         </div>
+        <div class="image-container">
+            <img class="bleed-image-side" alt="Detalle industrial abstracto"
+                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+        </div>
     </div>
-</div>
 
-<!-- ¡NUEVO SLIDE! Slide 5: Research & Development -->
-<div class="slide-container" id="slide5">
-    <h2 class="slide-title">4. El Laboratorio: <span class="highlight">I+D en Mobiliario</span></h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>Trabajé en Investigación y Desarrollo (R&D), diseñando mobiliario, creando planos y construyendo prototipos desde cero.</li>
-                    <li>Aquí entendí el ciclo de vida de un producto: desde un simple boceto para la ergonomía hasta el usuario final.</li>
-                    <li>Aprendí que antes de lanzar algo a producción masiva, <strong>tienes que probarlo hasta romperlo</strong> (literalmente).</li>
-                </ul>
-                <div class="moral-box">
-                    <span>Lección 04</span>
-                    <p>El "Research & Development" del mundo físico es el gemelo exacto de la creación de software. Prototipar, probar y romper cosas es la base del Control de Calidad.</p>
+
+
+
+    <!-- Slide 4: Research & Development -->
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">4. El Laboratorio: <span class="highlight">I+D en Mobiliario</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Trabajé en Investigación y Desarrollo (R&D), diseñando mobiliario, creando planos y
+                            construyendo prototipos desde cero.</li>
+                        <li>Aquí entendí el ciclo de vida de un producto: desde un simple boceto para la ergonomía hasta
+                            el usuario final.</li>
+                        <li>Aprendí que antes de lanzar algo a producción masiva, <strong>tienes que probarlo hasta
+                                romperlo</strong> (literalmente).</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 04</span>
+                        <p>El "Research & Development" del mundo físico es el gemelo exacto de la creación de software.
+                            Prototipar, probar y romper cosas es la base del Control de Calidad.</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Puedes reemplazar por tu propia foto de prototipos -->
-                    <img alt="Planos y prototipos de diseño industrial" src="mobiliario.jpg">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 3: El Recorrido Simplificado -->
-<div class="slide-container bleed-image-layout" id="slide3">
-    <div class="content-container">
-        <h2 class="slide-title" style="margin-bottom: 20px;">2. El Recorrido: <br><span class="highlight">Mundo Físico</span></h2>
-        <div class="content-area" style="align-items: flex-start; text-align: left;">
-            <p style="margin-bottom: 15px;">Después de los plásticos, mi carrera no fue una línea recta. Verifiqué dotaciones infantiles (viendo el impacto humano), aguanté el ruido y las chispas de una metalmecánica, y aseguré la calidad de muebles de lujo en Medellín.</p>
-            <p style="margin-bottom: 30px;">Parecen mundos distintos, pero todos me enseñaron a resolver problemas reales bajo mucha presión.</p>
-            <div class="moral-box" style="margin-top: 10px; width: 100%;">
-                <span>Lección 02</span>
-                <p>El "éxito lineal" es un mito. Cada industria, por dura o lejana que parezca, forja tu carácter y te da un criterio de calidad que te servirá para siempre.</p>
-            </div>
-        </div>
-    </div>
-    <div class="image-container">
-        <img class="bleed-image-side" alt="Detalle industrial abstracto" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-    </div>
-</div>
-
-<!-- Slide 6: El Salto al Futuro -->
-<div class="slide-container" id="slide6">
-    <h2 class="slide-title">5. El Salto al Futuro: <span class="highlight">Reinvención en TI</span></h2>
-    <div class="content-area">
-        <div class="quote-layout">
-            <blockquote>
-                "No cambié de profesión, <span class="highlight-quote">cambié de herramientas</span>. En el mobiliario buscaba que una silla fuera perfecta para una persona; en el software busco que <span class="highlight-quote">una aplicación sea perfecta para un usuario</span>."
-            </blockquote>
-            <p style="font-size: 22px; color: #8b949e;">— De Ingeniero de Diseño Industrial a QA Automation Engineer</p>
-        </div>
-        <div class="moral-box" style="margin-top: 40px; text-align: left; width: 80%;">
-            <span>Lección 05</span>
-            <p>No existen "carreras terminadas". Tus habilidades lógicas viajan contigo a cualquier industria. El software absorbió los procesos y me subí a esa ola.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 7: Las Grandes Ligas -->
-<div class="slide-container" id="slide7">
-    <h2 class="slide-title">6. El Presente: <span class="highlight">Código y Mundiales</span></h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>Después de la pandemia, combiné mi determinación por salir adelante con el poder de "manifestar" mis metas. Y cuando menos lo esperaba, la puerta se abrió.</li>
-                    <li>Entré a <strong>Globant</strong>, una multinacional que construye el futuro digital de las marcas más grandes del planeta.</li>
-                    <li>Pasé de verificar muebles a automatizar pruebas para titanes como <strong>Warner</strong>, <strong>PBS</strong> y ahora mismo, asegurando los sistemas para la <strong>FIFA</strong> de cara al Mundial.</li>
-                </ul>
-                <div class="moral-box">
-                    <span>Lección 06</span>
-                    <p>La suerte es lo que pasa cuando la preparación se encuentra con la oportunidad. Atrévete a apuntar alto; el talento de tu ciudad ya compite en ligas globales.</p>
-                </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <!-- Puedes reemplazar por foto en Globant o algo temático -->
-                    <img alt="Globant & FIFA" src="glob.jpg">
+                <div>
+                    <div class="image-wrapper">
+                        <!-- Puedes reemplazar por tu propia foto de prototipos -->
+                        <img alt="Planos y prototipos de diseño industrial" src="mobiliario.jpg">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Slide 8: La Verdad sobre la IA -->
-<div class="slide-container" id="slide8">
-    <h2 class="slide-title">7. La IA: <span class="highlight">Más que ChatGPT</span></h2>
-    <div class="content-area">
-        <div class="two-column">
-            <div>
-                <ul>
-                    <li>Si usan la IA solo para que les haga la tarea y entregarla sin leer, <strong>se están engañando a ustedes mismos</strong>. La IA no es para evitar pensar.</li>
-                    <li>En mi día a día, usamos la IA como una herramienta poderosa para analizar datos masivos, predecir fallos en el software y optimizar procesos.</li>
-                    <li>Úsenla en su cotidianidad como un "exoesqueleto" para su cerebro, no como un reemplazo de su inteligencia.</li>
-                </ul>
-                <div class="moral-box">
-                    <span>Lección 07</span>
-                    <p>Usar la IA para saltarse el esfuerzo te hace desechable. Integrarla para potenciar tu propio análisis te hace indispensable en el futuro.</p>
+    <!-- Slide 5: El Quiebre -->
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">3. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
+                        <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
+                        <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente
+                            el mundo.</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 03</span>
+                        <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu
+                            estrategia operativa.</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="image-wrapper">
-                    <img alt="Interfaz de código y datos de IA" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                <div>
+                    <div class="image-wrapper">
+                        <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Slide 9: Consejos -->
-<div class="slide-container" id="slide9">
-    <h2 class="slide-title" style="text-align: center; margin-bottom: 60px;">3 Algoritmos para <span class="highlight">la Vida</span></h2>
-    <div class="content-area">
-        <div class="tiled-content">
-            <div class="tile">
-                <div class="icon"><i class="fa-solid fa-microchip"></i></div>
-                <h3>Herramienta, no Atajo</h3>
-                <p>Dominen las nuevas tecnologías y la IA, pero recuerden que son solo herramientas. El valor real está en las preguntas que ustedes hacen, no en las respuestas automáticas.</p>
-            </div>
-            <div class="tile">
-                <div class="icon"><i class="fa-solid fa-rotate"></i></div>
-                <h3>Aprende a Aprender</h3>
-                <p>Las apps, los lenguajes y los empleos van a cambiar mil veces. Su lógica, su resiliencia y su agilidad para desaprender lo obsoleto es su verdadero activo.</p>
-            </div>
-            <div class="tile" style="border-color: rgba(255, 140, 0, 0.4);">
-                <div class="icon" style="color: #ff8c00; text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);"><i class="fa-solid fa-heart"></i></div>
-                <h3 style="color: #ff8c00;">Sean Buenas Personas</h3>
-                <p>Sobre todo, sean buenos con ustedes mismos si se equivocan de camino, y sean empáticos con los demás. La tecnología sobra, pero la humanidad es irremplazable.</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Slide 10: Q&A y Gemini -->
-<div class="slide-container" id="slide10">
-    <div class="content-area">
-        <div class="two-column" style="align-items: center; gap: 40px;">
-            <div class="qa-layout" style="text-align: left;">
-                <h2 style="font-size: 70px;">¿Preguntas?</h2>
-                <p style="font-size: 28px; margin-top: 20px; color: #fff;">Gracias por su tiempo.</p>
-                <p class="subtitle" style="margin-top: 40px; font-family: 'Space Grotesk', sans-serif;">
-                    <!-- Reemplaza con tu nombre -->
-                    <span style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px;">ANDRÉS FELIPE MESA RIVERA</span><br>
-                    QA Automation Engineer <br> <span style="font-size: 18px; color: #8b949e;">& Diseñador Industrial</span>
+    <!-- Slide 6: El Salto al Futuro -->
+    <div class="slide-container" id="slide6">
+        <h2 class="slide-title">5. El Salto al Futuro: <span class="highlight">Reinvención en TI</span></h2>
+        <div class="content-area">
+            <div class="quote-layout">
+                <blockquote>
+                    "No cambié de profesión, <span class="highlight-quote">cambié de herramientas</span>. En el
+                    mobiliario buscaba que una silla fuera perfecta para una persona; en el software busco que <span
+                        class="highlight-quote">una aplicación sea perfecta para un usuario</span>."
+                </blockquote>
+                <p style="font-size: 22px; color: #8b949e;">— De Ingeniero de Diseño Industrial a QA Automation Engineer
                 </p>
             </div>
-            
-            <div class="gemini-container">
-                <h3 style="font-size: 24px; margin-bottom: 10px;"><i class="fa-solid fa-wand-magic-sparkles"></i> Simulador de Futuro</h3>
-                <p style="font-size: 15px; margin-bottom: 20px; color: #8b949e;">
-                    ¿Qué te gusta hacer hoy? La IA te dirá cómo esas habilidades podrían transformarse en una carrera tecnológica.
-                </p>
-                
-                <input type="text" id="studentInterest" class="gemini-input" placeholder="Ej: Me gustan los videojuegos y la biología..." autocomplete="off">
-                
-                <div class="gemini-btn-container">
-                    <button id="askGeminiBtn" class="gemini-btn">
-                        <i class="fa-solid fa-terminal"></i> Hackear mi futuro
-                    </button>
-
-                    <button id="resetGeminiBtn" class="gemini-btn gemini-btn-reset">
-                        <i class="fa-solid fa-rotate-right"></i> Nuevo Estudiante
-                    </button>
-                    
-                    <div id="geminiLoader" class="loader"></div>
-                </div>
-
-                <div id="geminiResponse" class="gemini-response"></div>
+            <div class="moral-box" style="margin-top: 40px; text-align: left; width: 80%;">
+                <span>Lección 05</span>
+                <p>No existen "carreras terminadas". Tus habilidades lógicas viajan contigo a cualquier industria. El
+                    software absorbió los procesos y me subí a esa ola.</p>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. LÓGICA DE NAVEGACIÓN DE DIAPOSITIVAS ---
-        const slides = document.querySelectorAll('.slide-container');
-        let currentSlide = 0;
+    <!-- Slide 7: Las Grandes Ligas -->
+    <div class="slide-container" id="slide7">
+        <h2 class="slide-title">6. El Presente: <span class="highlight">Código y Mundiales</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Después de la pandemia, combiné mi determinación por salir adelante con el poder de
+                            "manifestar" mis metas. Y cuando menos lo esperaba, la puerta se abrió.</li>
+                        <li>Entré a <strong>Globant</strong>, una multinacional que construye el futuro digital de las
+                            marcas más grandes del planeta.</li>
+                        <li>Pasé de verificar muebles a automatizar pruebas para titanes como <strong>Warner</strong>,
+                            <strong>PBS</strong> y ahora mismo, asegurando los sistemas para la <strong>FIFA</strong> de
+                            cara al Mundial.
+                        </li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 06</span>
+                        <p>La suerte es lo que pasa cuando la preparación se encuentra con la oportunidad. Atrévete a
+                            apuntar alto; el talento de tu ciudad ya compite en ligas globales.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <!-- Puedes reemplazar por foto en Globant o algo temático -->
+                        <img alt="Globant & FIFA" src="glb.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
+    <!-- Slide 8: La Verdad sobre la IA -->
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">7. La IA: <span class="highlight">Más que ChatGPT</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Si usan la IA solo para que les haga la tarea y entregarla sin leer, <strong>se están
+                                engañando a ustedes mismos</strong>. La IA no es para evitar pensar.</li>
+                        <li>En mi día a día, usamos la IA como una herramienta poderosa para analizar datos masivos,
+                            predecir fallos en el software y optimizar procesos.</li>
+                        <li>Úsenla en su cotidianidad como un "exoesqueleto" para su cerebro, no como un reemplazo de su
+                            inteligencia.</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 07</span>
+                        <p>Usar la IA para saltarse el esfuerzo te hace desechable. Integrarla para potenciar tu propio
+                            análisis te hace indispensable en el futuro.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <img alt="Interfaz de código y datos de IA"
+                            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Consejos -->
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title" style="text-align: center; margin-bottom: 60px;">3 Tips para <span class="highlight">la
+                Vida</span></h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Herramienta, no Atajo</h3>
+                    <p>Dominen las nuevas tecnologías y la IA, pero recuerden que son solo herramientas. El valor real
+                        está en las preguntas que ustedes hacen, no en las respuestas automáticas.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-rotate"></i></div>
+                    <h3>Aprende a Aprender</h3>
+                    <p>Las apps, los lenguajes y los empleos van a cambiar mil veces. Su lógica, su resiliencia y su
+                        agilidad para desaprender lo obsoleto es su verdadero activo.</p>
+                </div>
+                <div class="tile" style="border-color: rgba(255, 140, 0, 0.4);">
+                    <div class="icon" style="color: #ff8c00; text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);"><i
+                            class="fa-solid fa-heart"></i></div>
+                    <h3 style="color: #ff8c00;">Sean Buenas Personas</h3>
+                    <p>Sobre todo, sean buenos con ustedes mismos si se equivocan de camino, y sean empáticos con los
+                        demás. La tecnología sobra, pero la humanidad es irremplazable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Q&A y Gemini -->
+    <div class="slide-container" id="slide10">
+        <div class="content-area">
+            <div class="two-column" style="align-items: center; gap: 40px;">
+                <div class="qa-layout" style="text-align: left;">
+                    <h2 style="font-size: 70px;">¿Preguntas?</h2>
+                    <p style="font-size: 28px; margin-top: 20px; color: #fff;">Gracias por su tiempo.</p>
+                    <p class="subtitle" style="margin-top: 40px; font-family: 'Space Grotesk', sans-serif;">
+                        <!-- Reemplaza con tu nombre -->
+                        <span
+                            style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px;">ANDRÉS
+                            FELIPE MESA RIVERA</span><br>
+                        QA Automation Engineer <br> <span style="font-size: 18px; color: #8b949e;">& Diseñador
+                            Industrial</span>
+                    </p>
+                </div>
+
+                <div class="gemini-container">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;"><i class="fa-solid fa-wand-magic-sparkles"></i>
+                        Simulador de Futuro</h3>
+                    <p style="font-size: 15px; margin-bottom: 20px; color: #8b949e;">
+                        ¿Qué te gusta hacer hoy? La IA te dirá cómo esas habilidades podrían transformarse en una
+                        carrera tecnológica.
+                    </p>
+
+                    <input type="text" id="studentInterest" class="gemini-input"
+                        placeholder="Ej: Me gustan los videojuegos y la biología..." autocomplete="off">
+
+                    <div class="gemini-btn-container">
+                        <button id="askGeminiBtn" class="gemini-btn">
+                            <i class="fa-solid fa-terminal"></i> Hackear mi futuro
+                        </button>
+
+                        <button id="resetGeminiBtn" class="gemini-btn gemini-btn-reset">
+                            <i class="fa-solid fa-rotate-right"></i> Nuevo Estudiante
+                        </button>
+
+                        <div id="geminiLoader" class="loader"></div>
+                    </div>
+
+                    <div id="geminiResponse" class="gemini-response"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. LÓGICA DE NAVEGACIÓN DE DIAPOSITIVAS ---
+            const slides = document.querySelectorAll('.slide-container');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+                if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') {
+                    if (currentSlide < slides.length - 1) {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                    }
                 }
             });
-        }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            // --- 2. ANIMACIÓN "GLITCH" DE IDIOMAS (Diapositiva 1) ---
+            const title = document.getElementById('main-title');
+            const sub1 = document.getElementById('sub-title1');
+            const sub2 = document.getElementById('sub-title2');
+            const container = document.getElementById('intro-title-container');
 
-            if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') {
-                if (currentSlide < slides.length - 1) {
-                    currentSlide++;
-                    showSlide(currentSlide);
-                }
-            } else if (e.key === 'ArrowLeft') {
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    showSlide(currentSlide);
-                }
+            function applyGlitchAndChange(newTitle, newSub1, newSub2) {
+                container.classList.add('glitching');
+
+                setTimeout(() => {
+                    title.innerHTML = newTitle;
+                    sub1.innerHTML = newSub1;
+                    sub2.innerHTML = newSub2;
+                }, 250);
+
+                setTimeout(() => {
+                    container.classList.remove('glitching');
+                }, 500);
             }
-        });
 
-        // --- 2. ANIMACIÓN "GLITCH" DE IDIOMAS (Diapositiva 1) ---
-        const title = document.getElementById('main-title');
-        const sub1 = document.getElementById('sub-title1');
-        const sub2 = document.getElementById('sub-title2');
-        const container = document.getElementById('intro-title-container');
-
-        function applyGlitchAndChange(newTitle, newSub1, newSub2) {
-            container.classList.add('glitching');
-            
+            // 20 segundos -> Portugués
             setTimeout(() => {
-                title.innerHTML = newTitle;
-                sub1.innerHTML = newSub1;
-                sub2.innerHTML = newSub2;
-            }, 250); 
+                applyGlitchAndChange(
+                    "<span class='lang-tag'>[PT]</span> Sua Carreira <br> <span class='glitch-text'>is not a Tattoo</span> <span class='highlight'>não é uma Tatuagem</span>",
+                    "De Projetar Móveis a Automatizar o Futuro.",
+                    "(E por que sua primeira escolha universitária não será a última)."
+                );
+            }, 20000);
 
+            // 28 segundos -> Español
             setTimeout(() => {
-                container.classList.remove('glitching');
-            }, 500); 
-        }
+                applyGlitchAndChange(
+                    "<span class='lang-tag es'>[ES]</span> Tu Carrera <br> <span class='highlight'>no es un Tatuaje</span>",
+                    "De Diseñar Muebles a Automatizar el Futuro.",
+                    "Y por qué tu primera elección universitaria no será la última.<br><br><span style='font-size:16px; color:#ff8c00;'><i class='fa-solid fa-language'></i> (Aviso: El inglés y el portugués fueron las llaves para este hackeo).</span>"
+                );
+            }, 28000);
 
-        // 20 segundos -> Portugués
-        setTimeout(() => {
-            applyGlitchAndChange(
-                "<span class='lang-tag'>[PT]</span> Sua Carreira <br> <span class='glitch-text'>is not a Tattoo</span> <span class='highlight'>não é uma Tatuagem</span>",
-                "De Projetar Móveis a Automatizar o Futuro.",
-                "(E por que sua primeira escolha universitária não será a última)."
-            );
-        }, 20000);
+            // --- 3. CONEXIÓN AL BACKEND DE VERCEL PARA LA IA ---
+            const askBtn = document.getElementById('askGeminiBtn');
+            const resetBtn = document.getElementById('resetGeminiBtn');
+            const inputField = document.getElementById('studentInterest');
+            const responseDiv = document.getElementById('geminiResponse');
+            const loader = document.getElementById('geminiLoader');
 
-        // 28 segundos -> Español
-        setTimeout(() => {
-            applyGlitchAndChange(
-                "<span class='lang-tag es'>[ES]</span> Tu Carrera <br> <span class='highlight'>no es un Tatuaje</span>",
-                "De Diseñar Muebles a Automatizar el Futuro.",
-                "Y por qué tu primera elección universitaria no será la última.<br><br><span style='font-size:16px; color:#ff8c00;'><i class='fa-solid fa-language'></i> (Aviso: El inglés y el portugués fueron las llaves para este hackeo).</span>"
-            );
-        }, 28000);
+            async function fetchGeminiResponse(userPrompt) {
+                // Llama al archivo /api/gemini.js de Vercel
+                const apiUrl = `/api/gemini`;
+                const payload = { prompt: userPrompt };
 
-        // --- 3. CONEXIÓN AL BACKEND DE VERCEL PARA LA IA ---
-        const askBtn = document.getElementById('askGeminiBtn');
-        const resetBtn = document.getElementById('resetGeminiBtn');
-        const inputField = document.getElementById('studentInterest');
-        const responseDiv = document.getElementById('geminiResponse');
-        const loader = document.getElementById('geminiLoader');
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
 
-        async function fetchGeminiResponse(userPrompt) {
-            // Llama al archivo /api/gemini.js de Vercel
-            const apiUrl = `/api/gemini`; 
-            const payload = { prompt: userPrompt };
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const result = await response.json();
-                return result.text ? result.text : "Error procesando tu futuro. ¡Inténtalo de nuevo!";
-            } catch (error) {
-                console.error("Error llamando al backend:", error);
-                return "Ups, los servidores están ocupados. ¡Prueba de nuevo en un segundo!";
-            }
-        }
-
-        // Evento principal para consultar a la IA
-        askBtn.addEventListener('click', async () => {
-            const interest = inputField.value.trim();
-            if (!interest) return;
-
-            // Bloquear input y mostrar loader
-            inputField.disabled = true;
-            askBtn.style.display = 'none';
-            loader.style.display = 'block';
-            responseDiv.style.display = 'none';
-
-            let rawText = await fetchGeminiResponse(interest);
-            
-            const htmlText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-            responseDiv.innerHTML = htmlText;
-            responseDiv.style.display = 'block';
-
-            // Ocultar loader y mostrar botón de reinicio
-            loader.style.display = 'none';
-            resetBtn.style.display = 'flex';
-        });
-
-        // Evento para limpiar y reiniciar el simulador
-        resetBtn.addEventListener('click', () => {
-            inputField.value = '';
-            inputField.disabled = false;
-            responseDiv.style.display = 'none';
-            responseDiv.innerHTML = '';
-            
-            resetBtn.style.display = 'none';
-            askBtn.style.display = 'flex';
-            
-            inputField.focus();
-        });
-
-        // "Enter" envía el formulario
-        inputField.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                if(askBtn.style.display !== 'none') {
-                    askBtn.click();
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    return result.text ? result.text : "Error procesando tu futuro. ¡Inténtalo de nuevo!";
+                } catch (error) {
+                    console.error("Error llamando al backend:", error);
+                    return "Ups, los servidores están ocupados. ¡Prueba de nuevo en un segundo!";
                 }
             }
-        });
-    });
-</script>
 
-</body></html>
+            // Evento principal para consultar a la IA
+            askBtn.addEventListener('click', async () => {
+                const interest = inputField.value.trim();
+                if (!interest) return;
+
+                // Bloquear input y mostrar loader
+                inputField.disabled = true;
+                askBtn.style.display = 'none';
+                loader.style.display = 'block';
+                responseDiv.style.display = 'none';
+
+                let rawText = await fetchGeminiResponse(interest);
+
+                const htmlText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                responseDiv.innerHTML = htmlText;
+                responseDiv.style.display = 'block';
+
+                // Ocultar loader y mostrar botón de reinicio
+                loader.style.display = 'none';
+                resetBtn.style.display = 'flex';
+            });
+
+            // Evento para limpiar y reiniciar el simulador
+            resetBtn.addEventListener('click', () => {
+                inputField.value = '';
+                inputField.disabled = false;
+                responseDiv.style.display = 'none';
+                responseDiv.innerHTML = '';
+
+                resetBtn.style.display = 'none';
+                askBtn.style.display = 'flex';
+
+                inputField.focus();
+            });
+
+            // "Enter" envía el formulario
+            inputField.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (askBtn.style.display !== 'none') {
+                        askBtn.click();
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
