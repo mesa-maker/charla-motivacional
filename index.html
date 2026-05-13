@@ -12,6 +12,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --scale-factor: 1;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -63,7 +67,7 @@
             width: 1280px;
             opacity: 0;
             visibility: hidden;
-            transform: scale(0.95);
+            transform: scale(calc(var(--scale-factor) * 0.95));
             transition: opacity 0.5s ease, transform 0.5s ease;
             z-index: 1;
         }
@@ -83,7 +87,7 @@
         .slide-container.active {
             opacity: 1;
             visibility: visible;
-            transform: scale(1);
+            transform: scale(var(--scale-factor));
             z-index: 10;
         }
 
@@ -725,6 +729,69 @@
             transform: translate(15px, 15px);
             display: none;
         }
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+            }
+            .slide-container {
+                width: 100vw;
+                height: 100vh;
+                height: 100dvh;
+                max-width: none;
+                max-height: none;
+                padding: 40px 20px;
+                border: none;
+                border-radius: 0;
+                justify-content: flex-start;
+                overflow-y: auto;
+                box-shadow: none;
+            }
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .slide-container.bleed-image-layout {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .slide-container.bleed-image-layout > .content-container {
+                padding: 20px;
+                height: auto;
+            }
+            .slide-container.bleed-image-layout > .image-container {
+                height: 250px;
+                border-left: none;
+                border-top: 2px solid rgba(0, 255, 255, 0.4);
+            }
+            .slide-container.bleed-image-layout img.bleed-image-side {
+                max-height: 250px;
+            }
+            .image-wrapper {
+                height: 220px;
+            }
+            h1 { font-size: 40px; letter-spacing: 2px; }
+            .slide-title { font-size: 32px; margin-bottom: 25px; }
+            h2 { font-size: 28px; }
+            h3 { font-size: 22px; }
+            p, li, .subtitle { font-size: 16px; line-height: 1.5; }
+            .subtitle { font-size: 18px !important; margin-top: 10px !important; }
+            .qa-layout h2 { font-size: 50px; }
+            .tiled-content { flex-direction: column; gap: 20px; }
+            .tile { padding: 25px 20px; }
+            .tile .icon { font-size: 40px; margin-bottom: 15px; }
+            .quote-layout { padding: 25px 15px; width: 100%; }
+            .quote-layout blockquote { font-size: 22px; }
+            .quote-layout::before { font-size: 60px; top: -10px; left: 0px; }
+            .quote-layout::after { font-size: 60px; bottom: -30px; right: 0px; }
+            .controls-hint { font-size: 10px; bottom: 10px; right: 10px; }
+            .moral-box { margin-top: 20px; padding: 15px; }
+            .moral-box span { font-size: 12px; }
+            .moral-box p { font-size: 15px; }
+            .gemini-container { padding: 20px 15px; }
+            .gemini-btn { padding: 10px 15px; font-size: 14px; }
+            .gemini-btn-container { flex-wrap: wrap; height: auto; }
+        }
     </style>
 </head>
 
@@ -1056,19 +1123,47 @@
                 }
             });
 
-            // --- 1.5. NAVEGACIÓN CON CLIC ---
+            // --- 1.5. NAVEGACIÓN CON CLIC / TAP ---
             document.addEventListener('click', (e) => {
                 // Prevent advancing when clicking on interactive elements
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.closest('button')) {
                     return;
                 }
-                if (e.button === 0 && currentSlide < slides.length - 1) { // Left click
-                    currentSlide++;
-                    showSlide(currentSlide);
+                
+                const clientX = e.clientX;
+                const windowWidth = window.innerWidth;
+                
+                if (clientX < windowWidth * 0.3) {
+                    // Tap on left 30% goes back
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                    }
+                } else {
+                    // Tap on right 70% goes forward
+                    if (currentSlide < slides.length - 1) {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    }
                 }
             });
 
-            // --- 1.6. TIMER EN EL MOUSE ---
+            // --- 1.6. ESCALADO RESPONSIVE ---
+            function resizePresentation() {
+                if (window.innerWidth <= 768) {
+                    document.documentElement.style.setProperty('--scale-factor', 1);
+                    return;
+                }
+                const scaleX = window.innerWidth / 1280;
+                const scaleY = window.innerHeight / 720;
+                let scale = Math.min(scaleX, scaleY);
+                if (scale > 1) scale = 1; 
+                document.documentElement.style.setProperty('--scale-factor', scale);
+            }
+            window.addEventListener('resize', resizePresentation);
+            resizePresentation();
+
+            // --- 1.7. TIMER EN EL MOUSE ---
             const mouseTimer = document.getElementById('mouse-timer');
             let timerSeconds = 0;
             let timerActive = false;
