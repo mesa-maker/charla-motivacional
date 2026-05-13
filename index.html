@@ -706,12 +706,32 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        .mouse-timer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            color: #0ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            transform: translate(15px, 15px);
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="controls-hint"><i class="fa-solid fa-keyboard"></i> Use ⬅️ ➡️ to navigate</div>
+    <div id="mouse-timer" class="mouse-timer">00:00</div>
+    <div class="controls-hint"><i class="fa-solid fa-keyboard"></i> Use ⬅️ ➡️ to navigate | Click to advance</div>
 
     <!-- Slide 1: Title Slide -->
     <div class="slide-container active" id="slide1">
@@ -789,7 +809,34 @@
 
 
 
-    <!-- Slide 4: Research & Development -->
+    <!-- Slide 4: El Quiebre -->
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">3. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
+                        <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
+                        <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente
+                            el mundo.</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 03</span>
+                        <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu
+                            estrategia operativa.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Research & Development -->
     <div class="slide-container" id="slide5">
         <h2 class="slide-title">4. El Laboratorio: <span class="highlight">I+D en Mobiliario</span></h2>
         <div class="content-area">
@@ -813,33 +860,6 @@
                     <div class="image-wrapper">
                         <!-- Puedes reemplazar por tu propia foto de prototipos -->
                         <img alt="Planos y prototipos de diseño industrial" src="mobiliario.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 5: El Quiebre -->
-    <div class="slide-container" id="slide4">
-        <h2 class="slide-title">3. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <ul>
-                        <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
-                        <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
-                        <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente
-                            el mundo.</li>
-                    </ul>
-                    <div class="moral-box">
-                        <span>Lección 03</span>
-                        <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu
-                            estrategia operativa.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="image-wrapper">
-                        <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
                     </div>
                 </div>
             </div>
@@ -1034,6 +1054,38 @@
                         showSlide(currentSlide);
                     }
                 }
+            });
+
+            // --- 1.5. NAVEGACIÓN CON CLIC ---
+            document.addEventListener('click', (e) => {
+                // Prevent advancing when clicking on interactive elements
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                    return;
+                }
+                if (e.button === 0 && currentSlide < slides.length - 1) { // Left click
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            // --- 1.6. TIMER EN EL MOUSE ---
+            const mouseTimer = document.getElementById('mouse-timer');
+            let timerSeconds = 0;
+            let timerActive = false;
+
+            document.addEventListener('mousemove', (e) => {
+                if (!timerActive) {
+                    timerActive = true;
+                    mouseTimer.style.display = 'block';
+                    setInterval(() => {
+                        timerSeconds++;
+                        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+                        const secs = String(timerSeconds % 60).padStart(2, '0');
+                        mouseTimer.textContent = `${mins}:${secs}`;
+                    }, 1000);
+                }
+                mouseTimer.style.left = e.clientX + 'px';
+                mouseTimer.style.top = e.clientY + 'px';
             });
 
             // --- 2. ANIMACIÓN "GLITCH" DE IDIOMAS (Diapositiva 1) ---
