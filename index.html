@@ -512,6 +512,24 @@
             text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
         }
 
+        /* Control de tamaño y scroll para la respuesta */
+        .gemini-response {
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        
+        .gemini-response::-webkit-scrollbar {
+            width: 8px;
+        }
+        .gemini-response::-webkit-scrollbar-track {
+            background: rgba(0, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        .gemini-response::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
         .loader {
             display: none;
             border: 2px solid rgba(0, 255, 255, 0.1);
@@ -588,15 +606,15 @@
 <!-- Slide 1: Title Slide (Activa por defecto) -->
 <div class="slide-container active" id="slide1">
     <div class="title-layout" id="intro-title-container">
-       
-
+        
         <!-- Inicia en Inglés -->
         <h1 id="main-title">Your Career <br> <span class="highlight">is not a Tattoo</span></h1>
         <p class="subtitle" id="sub-title1" style="margin-top: 30px; font-size: 28px;">From Designing Furniture to Automating the Future.</p>
         <p class="subtitle" id="sub-title2" style="margin-top: 15px; color: rgba(0, 255, 255, 0.6);">(And why your first college choice won't be your last).</p>
-         <!-- Nombre del Presentador -->
+        <p> </p>
+        <!-- Nombre del Presentador -->
         <p class="subtitle" style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; margin-bottom: 20px;">
-            <i class="fa-solid fa-user-astronaut"></i> [ANDRÉS FELIPE MESA RIVERA]
+            <i class="fa-solid fa-user-astronaut"></i>ANDRÉS FELIPE MESA RIVERA
         </p>
     </div>
 </div>
@@ -619,7 +637,7 @@
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img alt="Máquina de inyección de plástico industrial" src="https://www.dakumar.com/images/index202301/plastic-injection-molding-machine-workshop-dkm-mobile.jpg">
+                    <img alt="Máquina de inyección de plástico industrial" src="plasticos.jpg">
                 </div>
             </div>
         </div>
@@ -640,7 +658,7 @@
         </div>
     </div>
     <div class="image-container">
-        <img class="bleed-image-side" alt="Detalle industrial abstracto" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+        <img class="bleed-image-side" alt="Detalle industrial abstracto" src="metalmecanica.jpg">
     </div>
 </div>
 
@@ -662,7 +680,7 @@
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img alt="Emprendedor mirando una laptop durante la pandemia" src="https://media.istockphoto.com/id/2162997493/photo/entrepreneur-frustrated-and-woman-with-phone-call-office-and-boxes-for-ecommerce-stress-and.jpg?s=612x612&w=0&k=20&c=HVPLL2MV6I1N5A09z3s0rUv4qBswg5WyUa7XqhqChG4=">
+                    <img alt="Emprendedor mirando una laptop durante la pandemia" src="emprendimiento.jpg">
                 </div>
             </div>
         </div>
@@ -686,7 +704,7 @@
     </div>
 </div>
 
-<!-- Slide 6: Las Grandes Ligas (¡NUEVA!) -->
+<!-- Slide 6: Las Grandes Ligas -->
 <div class="slide-container" id="slide6">
     <h2 class="slide-title">5. El Presente: <span class="highlight">Código y Mundiales</span></h2>
     <div class="content-area">
@@ -704,7 +722,7 @@
             </div>
             <div>
                 <div class="image-wrapper">
-                    <img alt="Planeta digital brillante con redes de conexión" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                    <img alt="Planeta digital brillante con redes de conexión" src="globant.jpg">
                 </div>
             </div>
         </div>
@@ -768,7 +786,7 @@
                 <h2 style="font-size: 70px;">¿Preguntas?</h2>
                 <p style="font-size: 28px; margin-top: 20px; color: #fff;">Gracias por su tiempo.</p>
                 <p class="subtitle" style="margin-top: 40px; font-family: 'Space Grotesk', sans-serif;">
-                    <span style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px;">[ANDRÉS FELIPE MESA RIVERA]</span><br>
+                    <span style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px;">ANDRÉS FELIPE MESA RIVERA </span><br>
                     QA Automation Engineer <br> <span style="font-size: 18px; color: #8b949e;">Ex-Diseñador Industrial</span>
                 </p>
             </div>
@@ -784,6 +802,10 @@
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button id="askGeminiBtn" class="gemini-btn">
                         <i class="fa-solid fa-terminal"></i> Hackear mi futuro
+                    </button>
+                    <!-- Nuevo Botón de Reiniciar (Oculto por defecto) -->
+                    <button id="resetGeminiBtn" class="gemini-btn" style="display: none; border-color: #ff8c00; color: #ff8c00; box-shadow: 0 0 10px rgba(255, 140, 0, 0.2);">
+                        <i class="fa-solid fa-rotate-left"></i> Nuevo Estudiante
                     </button>
                     <div id="geminiLoader" class="loader"></div>
                 </div>
@@ -866,6 +888,7 @@
 
         // --- 3. CONEXIÓN SEGURA AL BACKEND DE VERCEL PARA LA IA ---
         const askBtn = document.getElementById('askGeminiBtn');
+        const resetBtn = document.getElementById('resetGeminiBtn');
         const inputField = document.getElementById('studentInterest');
         const responseDiv = document.getElementById('geminiResponse');
         const loader = document.getElementById('geminiLoader');
@@ -922,10 +945,22 @@
             responseDiv.innerHTML = htmlText;
             responseDiv.style.display = 'block';
 
-            // Restaurar interfaz
+            // Restaurar interfaz y mostrar botón de reinicio
             inputField.disabled = false;
-            askBtn.disabled = false;
+            askBtn.style.display = 'none'; // Ocultar botón de preguntar
+            resetBtn.style.display = 'flex'; // Mostrar botón de reset
             loader.style.display = 'none';
+        });
+
+        // Lógica del botón Reiniciar
+        resetBtn.addEventListener('click', () => {
+            inputField.value = '';
+            responseDiv.style.display = 'none';
+            responseDiv.innerHTML = '';
+            resetBtn.style.display = 'none';
+            askBtn.style.display = 'flex';
+            askBtn.disabled = false;
+            inputField.focus(); // Poner el cursor automáticamente para el siguiente
         });
 
         // Permitir usar "Enter" dentro del input sin cambiar de diapositiva
