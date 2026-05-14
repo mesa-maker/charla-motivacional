@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
     // 2. Extraer lo que el estudiante escribió en el HTML
     const { prompt } = req.body;
-    
+
     // 3. Leer la llave secreta desde Vercel (nadie puede ver esto)
     const apiKey = process.env.GEMINI_API_KEY;
 
@@ -19,7 +19,9 @@ export default async function handler(req, res) {
     Tu mensaje central es que no hay carreras terminadas, sino habilidades que se transforman, y la importancia de aprender a aprender.
     Un estudiante te dirá qué le gusta hacer hoy.
     Tu tarea: Dale un consejo EXTREMADAMENTE CORTO (máximo 3 oraciones). Sé contundente, al grano y no te extiendas. Explica cómo sus aficiones actuales son la base de una carrera tecnológica.
-    Usa un tono motivador, cercano, un poco "geek/hacker". Usa negritas (**) para resaltar palabras clave.`;
+    Usa un tono motivador, cercano, un poco "geek/hacker". Usa negritas (**) para resaltar palabras clave.
+    No les des solo opciones en el mundo tech, dales opciones en el mundo real, para que puedan entender que la carrera no define a la persona, sino que las habilidades que adquieran lo harán y resalta la importancia de un oficio o hobbie y de aprender
+    idiomas como el inglés y el mandarín`;
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
@@ -40,7 +42,7 @@ export default async function handler(req, res) {
 
         const data = await response.json();
         const candidate = data.candidates?.[0];
-        
+
         if (candidate && candidate.content?.parts?.[0]?.text) {
             // Devolver el texto al frontend
             res.status(200).json({ text: candidate.content.parts[0].text });

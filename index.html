@@ -774,7 +774,29 @@
             animation: qr-glitch 0.3s cubic-bezier(.25, .46, .45, .94) both;
         }
 
+        .mobile-swipe-arrow {
+            display: none;
+        }
+
         @media (max-width: 768px) {
+            #slide1 .title-layout {
+                justify-content: center;
+                gap: 50px;
+                padding-top: 50px;
+            }
+            #slide1 h1 {
+                margin-bottom: 0;
+            }
+            #slide1 .subtitle {
+                margin-top: 0 !important;
+            }
+            .mobile-swipe-arrow {
+                display: block;
+                font-size: 40px;
+                color: #0ff;
+                margin-top: 30px;
+                text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            }
             body {
                 align-items: flex-start;
             }
@@ -933,9 +955,7 @@
             }
 
             .controls-hint {
-                font-size: 10px;
-                bottom: 10px;
-                right: 10px;
+                display: none;
             }
 
             .moral-box {
@@ -1005,6 +1025,10 @@
                 style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 3px; margin-bottom: 20px;">
                 <i class="fa-solid fa-user-astronaut"></i> ANDRÉS FELIPE MESA RIVERA
             </p>
+
+            <div class="mobile-swipe-arrow glitching">
+                <i class="fa-solid fa-angles-down"></i>
+            </div>
         </div>
     </div>
 
