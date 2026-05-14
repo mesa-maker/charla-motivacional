@@ -304,6 +304,15 @@
             opacity: 0.3;
         }
 
+        .image-caption {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: right;
+            margin-top: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
         .slide-container.bleed-image-layout {
             align-items: start;
             display: grid;
@@ -784,12 +793,15 @@
                 gap: 50px;
                 padding-top: 50px;
             }
+
             #slide1 h1 {
                 margin-bottom: 0;
             }
+
             #slide1 .subtitle {
                 margin-top: 0 !important;
             }
+
             .mobile-swipe-arrow {
                 display: block;
                 font-size: 40px;
@@ -797,6 +809,7 @@
                 margin-top: 30px;
                 text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
             }
+
             body {
                 align-items: flex-start;
             }
@@ -827,7 +840,7 @@
             }
 
             /* Fix for invisible images on iOS Safari / WebKit */
-            .image-wrapper img, 
+            .image-wrapper img,
             .slide-container.bleed-image-layout img.bleed-image-side {
                 mix-blend-mode: normal !important;
                 filter: none !important;
@@ -1065,6 +1078,7 @@
                         <!-- Puedes reemplazar este src por el nombre de tu foto en GitHub. Ej: src="fabrica.jpg" -->
                         <img alt="Industrial Design" src="industrial_design.jpg">
                     </div>
+                    <div class="image-caption">© 2016 Andrés Felipe Mesa Rivera</div>
                 </div>
             </div>
         </div>
@@ -1091,6 +1105,7 @@
         <div class="image-container">
             <img class="bleed-image-side" alt="Detalle industrial abstracto"
                 src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+            <div class="image-caption" style="margin-right: 20px;">© Unsplash.com</div>
         </div>
     </div>
 
@@ -1117,8 +1132,9 @@
                 <div>
                     <div class="image-wrapper">
                         <!-- Puedes reemplazar por tu propia foto de prototipos -->
-                        <img alt="Planos y prototipos de diseño industrial" src="mobiliario.jpg">
+                        <img alt="Mobiliario Prcptl" src="mobiliario.jpg">
                     </div>
+                    <div class="image-caption">© 2018 Andrés Felipe Mesa Rivera</div>
                 </div>
             </div>
         </div>
@@ -1147,6 +1163,7 @@
                     <div class="image-wrapper">
                         <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
                     </div>
+                    <div class="image-caption">© 2020 Andrés Felipe Mesa Rivera</div>
                 </div>
             </div>
         </div>
@@ -1203,6 +1220,7 @@
                         <!-- Puedes reemplazar por foto en Globant o algo temático -->
                         <img alt="Globant & FIFA" src="glb.jpg">
                     </div>
+                    <div class="image-caption">© Globant. Todos los derechos reservados.</div>
                 </div>
             </div>
         </div>
@@ -1234,6 +1252,7 @@
                         <img alt="Interfaz de código y datos de IA"
                             src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
                     </div>
+                    <div class="image-caption">© Unsplash.com</div>
                 </div>
             </div>
         </div>
