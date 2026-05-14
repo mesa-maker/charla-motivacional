@@ -821,8 +821,17 @@
                 gap: 30px;
             }
 
-            .two-column>div:has(.image-wrapper) {
+            .two-column>div:has(.image-wrapper),
+            .two-column>div.mobile-img-col {
                 order: -1;
+            }
+
+            /* Fix for invisible images on iOS Safari / WebKit */
+            .image-wrapper img, 
+            .slide-container.bleed-image-layout img.bleed-image-side {
+                mix-blend-mode: normal !important;
+                filter: none !important;
+                transform: translateZ(0);
             }
 
             .slide-container.bleed-image-layout {
@@ -1380,6 +1389,14 @@
             }
             window.addEventListener('resize', resizePresentation);
             resizePresentation();
+
+            // Fix mobile order for browsers that do not support :has()
+            document.querySelectorAll('.two-column').forEach(col => {
+                const imgWrapper = col.querySelector('.image-wrapper');
+                if (imgWrapper && imgWrapper.parentElement) {
+                    imgWrapper.parentElement.classList.add('mobile-img-col');
+                }
+            });
 
             // --- 1.7. QR GLITCH ANIMATION ---
             const qrImage = document.getElementById('qr-image');
