@@ -467,6 +467,33 @@
             text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
 
+        .qa-main-title {
+            font-size: 70px !important;
+        }
+
+        .qa-thanks {
+            font-size: 28px;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .qa-author-block {
+            margin-top: 40px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .qa-name {
+            color: #ff8c00;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .qa-role {
+            font-size: 18px;
+            color: #8b949e;
+        }
+
         .gemini-container {
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(0, 255, 255, 0.4);
@@ -711,28 +738,47 @@
             letter-spacing: 1px;
         }
 
-        .mouse-timer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.5);
-            color: #0ff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-            transform: translate(15px, 15px);
-            display: none;
+        @keyframes qr-glitch {
+            0% {
+                transform: translate(0);
+                filter: none;
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+                filter: invert(20%);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+                filter: hue-rotate(180deg);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+                filter: none;
+            }
+
+            100% {
+                transform: translate(0);
+                filter: none;
+            }
         }
+
+        .qr-glitching {
+            animation: qr-glitch 0.3s cubic-bezier(.25, .46, .45, .94) both;
+        }
+
         @media (max-width: 768px) {
             body {
                 align-items: flex-start;
             }
+
             .slide-container {
                 width: 100vw;
                 height: 100vh;
@@ -746,58 +792,200 @@
                 overflow-y: auto;
                 box-shadow: none;
             }
+
             .two-column {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 30px;
             }
+
+            .two-column>div:has(.image-wrapper) {
+                order: -1;
+            }
+
             .slide-container.bleed-image-layout {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                padding: 40px 0;
             }
-            .slide-container.bleed-image-layout > .content-container {
-                padding: 20px;
-                height: auto;
+
+            .slide-container.bleed-image-layout>.content-container {
+                display: contents;
             }
-            .slide-container.bleed-image-layout > .image-container {
+
+            .slide-container.bleed-image-layout .slide-title {
+                order: 1;
+                padding: 0 20px;
+            }
+
+            .slide-container.bleed-image-layout .image-container {
+                order: 2;
                 height: 250px;
+                width: 100%;
                 border-left: none;
                 border-top: 2px solid rgba(0, 255, 255, 0.4);
+                border-bottom: 2px solid rgba(0, 255, 255, 0.4);
             }
+
+            .slide-container.bleed-image-layout .content-area {
+                order: 3;
+                padding: 0 20px;
+            }
+
             .slide-container.bleed-image-layout img.bleed-image-side {
                 max-height: 250px;
             }
+
             .image-wrapper {
                 height: 220px;
             }
-            h1 { font-size: 40px; letter-spacing: 2px; }
-            .slide-title { font-size: 32px; margin-bottom: 25px; }
-            h2 { font-size: 28px; }
-            h3 { font-size: 22px; }
-            p, li, .subtitle { font-size: 16px; line-height: 1.5; }
-            .subtitle { font-size: 18px !important; margin-top: 10px !important; }
-            .qa-layout h2 { font-size: 50px; }
-            .tiled-content { flex-direction: column; gap: 20px; }
-            .tile { padding: 25px 20px; }
-            .tile .icon { font-size: 40px; margin-bottom: 15px; }
-            .quote-layout { padding: 25px 15px; width: 100%; }
-            .quote-layout blockquote { font-size: 22px; }
-            .quote-layout::before { font-size: 60px; top: -10px; left: 0px; }
-            .quote-layout::after { font-size: 60px; bottom: -30px; right: 0px; }
-            .controls-hint { font-size: 10px; bottom: 10px; right: 10px; }
-            .moral-box { margin-top: 20px; padding: 15px; }
-            .moral-box span { font-size: 12px; }
-            .moral-box p { font-size: 15px; }
-            .gemini-container { padding: 20px 15px; }
-            .gemini-btn { padding: 10px 15px; font-size: 14px; }
-            .gemini-btn-container { flex-wrap: wrap; height: auto; }
+
+            h1 {
+                font-size: 40px;
+                letter-spacing: 2px;
+            }
+
+            .slide-title {
+                font-size: 32px;
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            p,
+            li,
+            .subtitle {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .subtitle {
+                font-size: 18px !important;
+                margin-top: 10px !important;
+            }
+
+            .qa-layout h2 {
+                font-size: 50px;
+            }
+
+            .qa-main-title {
+                font-size: 40px !important;
+                margin-bottom: 10px;
+            }
+
+            .qa-thanks {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            .qa-author-block {
+                margin-top: 20px;
+            }
+
+            .qa-name {
+                font-size: 16px;
+            }
+
+            .qa-role {
+                font-size: 14px;
+            }
+
+            .tiled-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .tile {
+                padding: 25px 20px;
+            }
+
+            .tile .icon {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+
+            .quote-layout {
+                padding: 25px 15px;
+                width: 100%;
+            }
+
+            .quote-layout blockquote {
+                font-size: 22px;
+            }
+
+            .quote-layout::before {
+                font-size: 60px;
+                top: -10px;
+                left: 0px;
+            }
+
+            .quote-layout::after {
+                font-size: 60px;
+                bottom: -30px;
+                right: 0px;
+            }
+
+            .controls-hint {
+                font-size: 10px;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .moral-box {
+                margin-top: 20px;
+                padding: 15px;
+            }
+
+            .moral-box span {
+                font-size: 12px;
+            }
+
+            .moral-box p {
+                font-size: 15px;
+            }
+
+            .gemini-container {
+                padding: 20px 15px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .gemini-input {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .gemini-btn {
+                padding: 12px 15px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gemini-btn-container {
+                flex-direction: column;
+                gap: 10px;
+                height: auto;
+                align-items: stretch;
+            }
+
+            .gemini-response {
+                max-height: 180px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div id="mouse-timer" class="mouse-timer">00:00</div>
+
     <div class="controls-hint"><i class="fa-solid fa-keyboard"></i> Use ⬅️ ➡️ to navigate | Click to advance</div>
 
     <!-- Slide 1: Title Slide -->
@@ -873,38 +1061,8 @@
         </div>
     </div>
 
-
-
-
-    <!-- Slide 4: El Quiebre -->
+    <!-- Slide 4: Research & Development -->
     <div class="slide-container" id="slide4">
-        <h2 class="slide-title">3. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <ul>
-                        <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
-                        <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
-                        <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente
-                            el mundo.</li>
-                    </ul>
-                    <div class="moral-box">
-                        <span>Lección 03</span>
-                        <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu
-                            estrategia operativa.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="image-wrapper">
-                        <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 5: Research & Development -->
-    <div class="slide-container" id="slide5">
         <h2 class="slide-title">4. El Laboratorio: <span class="highlight">I+D en Mobiliario</span></h2>
         <div class="content-area">
             <div class="two-column">
@@ -934,9 +1092,39 @@
     </div>
 
 
+    <!-- Slide 5: El Quiebre -->
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">5. El Quiebre: <span class="highlight">Pandemia y Fracaso</span></h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul>
+                        <li>Llegó el 2020. Intenté emprender y, para ser honesto, no funcionó como esperaba.</li>
+                        <li>Las industrias físicas se paralizaron, pero las pantallas se encendieron más que nunca.</li>
+                        <li>Este "fracaso" me obligó a hacer una pausa y mirar hacia dónde se estaba moviendo realmente
+                            el mundo.</li>
+                    </ul>
+                    <div class="moral-box">
+                        <span>Lección 05</span>
+                        <p>Si eliges un camino y falla, no es el fin del mundo. Es solo un rediseño obligado de tu
+                            estrategia operativa.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="image-wrapper">
+                        <img alt="Emprendimiento Mesoide" src="mesoide.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <!-- Slide 6: El Salto al Futuro -->
     <div class="slide-container" id="slide6">
-        <h2 class="slide-title">5. El Salto al Futuro: <span class="highlight">Reinvención en TI</span></h2>
+        <h2 class="slide-title">6. El Salto al Futuro: <span class="highlight">Reinvención en TI</span></h2>
         <div class="content-area">
             <div class="quote-layout">
                 <blockquote>
@@ -948,7 +1136,7 @@
                 </p>
             </div>
             <div class="moral-box" style="margin-top: 40px; text-align: left; width: 80%;">
-                <span>Lección 05</span>
+                <span>Lección 06</span>
                 <p>No existen "carreras terminadas". Tus habilidades lógicas viajan contigo a cualquier industria. El
                     software absorbió los procesos y me subí a esa ola.</p>
             </div>
@@ -957,7 +1145,7 @@
 
     <!-- Slide 7: Las Grandes Ligas -->
     <div class="slide-container" id="slide7">
-        <h2 class="slide-title">6. El Presente: <span class="highlight">Código y Mundiales</span></h2>
+        <h2 class="slide-title">7. El Presente: <span class="highlight">Código y Mundiales</span></h2>
         <div class="content-area">
             <div class="two-column">
                 <div>
@@ -972,7 +1160,7 @@
                         </li>
                     </ul>
                     <div class="moral-box">
-                        <span>Lección 06</span>
+                        <span>Lección 07</span>
                         <p>La suerte es lo que pasa cuando la preparación se encuentra con la oportunidad. Atrévete a
                             apuntar alto; el talento de tu ciudad ya compite en ligas globales.</p>
                     </div>
@@ -989,7 +1177,7 @@
 
     <!-- Slide 8: La Verdad sobre la IA -->
     <div class="slide-container" id="slide8">
-        <h2 class="slide-title">7. La IA: <span class="highlight">Más que ChatGPT</span></h2>
+        <h2 class="slide-title">8. La IA: <span class="highlight">Más que ChatGPT</span></h2>
         <div class="content-area">
             <div class="two-column">
                 <div>
@@ -1002,8 +1190,9 @@
                             inteligencia.</li>
                     </ul>
                     <div class="moral-box">
-                        <span>Lección 07</span>
-                        <p>Usar la IA para saltarse el esfuerzo te hace desechable. Integrarla para potenciar tu propio
+                        <span>Lección 08</span>
+                        <p>Usar la IA para saltarse el esfuerzo te hace fácilmente reemplazable. Integrarla para
+                            potenciar tu propio
                             análisis te hace indispensable en el futuro.</p>
                     </div>
                 </div>
@@ -1019,7 +1208,7 @@
 
     <!-- Slide 9: Consejos -->
     <div class="slide-container" id="slide9">
-        <h2 class="slide-title" style="text-align: center; margin-bottom: 60px;">3 Tips para <span class="highlight">la
+        <h2 class="slide-title" style="text-align: center; margin-bottom: 60px;">9. Tips para <span class="highlight">la
                 Vida</span></h2>
         <div class="content-area">
             <div class="tiled-content">
@@ -1051,16 +1240,21 @@
         <div class="content-area">
             <div class="two-column" style="align-items: center; gap: 40px;">
                 <div class="qa-layout" style="text-align: left;">
-                    <h2 style="font-size: 70px;">¿Preguntas?</h2>
-                    <p style="font-size: 28px; margin-top: 20px; color: #fff;">Gracias por su tiempo.</p>
-                    <p class="subtitle" style="margin-top: 40px; font-family: 'Space Grotesk', sans-serif;">
-                        <!-- Reemplaza con tu nombre -->
-                        <span
-                            style="color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 20px;">ANDRÉS
-                            FELIPE MESA RIVERA</span><br>
-                        QA Automation Engineer <br> <span style="font-size: 18px; color: #8b949e;">& Diseñador
-                            Industrial</span>
+                    <h2 class="qa-main-title">¿Preguntas?</h2>
+                    <p class="qa-thanks">Gracias por su tiempo.</p>
+                    <p class="subtitle qa-author-block">
+                        <span class="qa-name">ANDRÉS FELIPE MESA RIVERA</span><br>
+                        QA Automation Engineer <br> <span class="qa-role">& Diseñador Industrial</span>
                     </p>
+                    <div class="qr-container"
+                        style="margin-top: 35px; display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
+                        <img id="qr-image" src="linkedin_afmr.png" alt="LinkedIn QR"
+                            style="width: 100px; height: 100px; border-radius: 8px; border: 2px solid rgba(0, 255, 255, 0.4); box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);">
+                        <a href="https://www.linkedin.com/in/andresfelipemesarivera" target="_blank"
+                            style="color: #8b949e; font-size: 15px; font-family: 'Space Grotesk', sans-serif; text-decoration: none; line-height: 1.4;">
+                            ¡Conectemos en <strong style="color: #0ff; letter-spacing: 1px;">LinkedIn</strong>!
+                        </a>
+                    </div>
                 </div>
 
                 <div class="gemini-container">
@@ -1129,10 +1323,10 @@
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.closest('button')) {
                     return;
                 }
-                
+
                 const clientX = e.clientX;
                 const windowWidth = window.innerWidth;
-                
+
                 if (clientX < windowWidth * 0.3) {
                     // Tap on left 30% goes back
                     if (currentSlide > 0) {
@@ -1157,31 +1351,22 @@
                 const scaleX = window.innerWidth / 1280;
                 const scaleY = window.innerHeight / 720;
                 let scale = Math.min(scaleX, scaleY);
-                if (scale > 1) scale = 1; 
+                if (scale > 1) scale = 1;
                 document.documentElement.style.setProperty('--scale-factor', scale);
             }
             window.addEventListener('resize', resizePresentation);
             resizePresentation();
 
-            // --- 1.7. TIMER EN EL MOUSE ---
-            const mouseTimer = document.getElementById('mouse-timer');
-            let timerSeconds = 0;
-            let timerActive = false;
-
-            document.addEventListener('mousemove', (e) => {
-                if (!timerActive) {
-                    timerActive = true;
-                    mouseTimer.style.display = 'block';
-                    setInterval(() => {
-                        timerSeconds++;
-                        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
-                        const secs = String(timerSeconds % 60).padStart(2, '0');
-                        mouseTimer.textContent = `${mins}:${secs}`;
-                    }, 1000);
-                }
-                mouseTimer.style.left = e.clientX + 'px';
-                mouseTimer.style.top = e.clientY + 'px';
-            });
+            // --- 1.7. QR GLITCH ANIMATION ---
+            const qrImage = document.getElementById('qr-image');
+            if (qrImage) {
+                setInterval(() => {
+                    qrImage.classList.add('qr-glitching');
+                    setTimeout(() => {
+                        qrImage.classList.remove('qr-glitching');
+                    }, 300);
+                }, 4000);
+            }
 
             // --- 2. ANIMACIÓN "GLITCH" DE IDIOMAS (Diapositiva 1) ---
             const title = document.getElementById('main-title');
@@ -1203,23 +1388,30 @@
                 }, 500);
             }
 
-            // 20 segundos -> Portugués
-            setTimeout(() => {
-                applyGlitchAndChange(
-                    "<span class='lang-tag'>[PT]</span> Sua Carreira <br> <span class='glitch-text'>is not a Tattoo</span> <span class='highlight'>não é uma Tatuagem</span>",
-                    "De Projetar Móveis a Automatizar o Futuro.",
-                    "(E por que sua primeira escolha universitária não será a última)."
-                );
-            }, 20000);
+            const languageStates = [
+                {
+                    title: "Your Career <br> <span class='highlight'>is not a Tattoo</span>",
+                    sub1: "From Designing Furniture to Automating the Future.",
+                    sub2: "(And why your first college choice won't be your last)."
+                },
+                {
+                    title: "<span class='lang-tag'>[PT]</span> Sua Carreira <br> <span class='glitch-text'>is not a Tattoo</span> <span class='highlight'>não é uma Tatuagem</span>",
+                    sub1: "De Projetar Móveis a Automatizar o Futuro.",
+                    sub2: "(E por que sua primeira escolha universitária não será a última)."
+                },
+                {
+                    title: "<span class='lang-tag es'>[ES]</span> Tu Carrera <br> <span class='highlight'>no es un Tatuaje</span>",
+                    sub1: "De Diseñar Muebles a Automatizar el Futuro.",
+                    sub2: "Y por qué tu primera elección universitaria no será la última.<br><br><span style='font-size:16px; color:#ff8c00;'><i class='fa-solid fa-language'></i> (Aviso: El inglés y el portugués fueron las llaves para este hackeo).</span>"
+                }
+            ];
 
-            // 28 segundos -> Español
-            setTimeout(() => {
-                applyGlitchAndChange(
-                    "<span class='lang-tag es'>[ES]</span> Tu Carrera <br> <span class='highlight'>no es un Tatuaje</span>",
-                    "De Diseñar Muebles a Automatizar el Futuro.",
-                    "Y por qué tu primera elección universitaria no será la última.<br><br><span style='font-size:16px; color:#ff8c00;'><i class='fa-solid fa-language'></i> (Aviso: El inglés y el portugués fueron las llaves para este hackeo).</span>"
-                );
-            }, 28000);
+            let langIndex = 0;
+            setInterval(() => {
+                langIndex = (langIndex + 1) % languageStates.length;
+                const state = languageStates[langIndex];
+                applyGlitchAndChange(state.title, state.sub1, state.sub2);
+            }, 5000);
 
             // --- 3. CONEXIÓN AL BACKEND DE VERCEL PARA LA IA ---
             const askBtn = document.getElementById('askGeminiBtn');
@@ -1249,10 +1441,83 @@
                 }
             }
 
+            // --- 4. GESTIÓN DE INTENTOS Y BLOQUEO ---
+            function checkLockState() {
+                const lockUntil = parseInt(localStorage.getItem('geminiLockUntil') || '0', 10);
+                const now = Date.now();
+
+                if (lockUntil > now) {
+                    lockUIAndStartCountdown(lockUntil);
+                } else {
+                    askBtn.disabled = false;
+                    inputField.disabled = false;
+                    askBtn.innerHTML = '<i class="fa-solid fa-terminal"></i> Hackear mi futuro';
+                }
+            }
+
+            let countdownInterval = null;
+            function lockUIAndStartCountdown(lockUntil) {
+                inputField.disabled = true;
+                askBtn.disabled = true;
+                askBtn.style.display = 'flex';
+                resetBtn.style.display = 'none';
+
+                if (countdownInterval) clearInterval(countdownInterval);
+
+                // Mostrar primer tick inmediatamente
+                updateCountdownTick(lockUntil);
+
+                countdownInterval = setInterval(() => {
+                    updateCountdownTick(lockUntil);
+                }, 1000);
+            }
+
+            function updateCountdownTick(lockUntil) {
+                const now = Date.now();
+                const diff = lockUntil - now;
+
+                if (diff <= 0) {
+                    clearInterval(countdownInterval);
+                    askBtn.disabled = false;
+                    inputField.disabled = false;
+                    inputField.value = '';
+                    responseDiv.style.display = 'none';
+                    responseDiv.innerHTML = '';
+                    askBtn.innerHTML = '<i class="fa-solid fa-terminal"></i> Hackear mi futuro';
+                    localStorage.removeItem('geminiLockUntil');
+                } else {
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    askBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Activando en ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }
+
+            checkLockState();
+
             // Evento principal para consultar a la IA
             askBtn.addEventListener('click', async () => {
                 const interest = inputField.value.trim();
                 if (!interest) return;
+
+                let attempts = parseInt(localStorage.getItem('geminiAttempts') || '0', 10);
+                attempts++;
+                localStorage.setItem('geminiAttempts', attempts.toString());
+
+                if (attempts >= 9) {
+                    // Resetear a los 9 intentos
+                    localStorage.removeItem('geminiAttempts');
+                    localStorage.removeItem('geminiLockUntil');
+
+                    inputField.value = '';
+                    inputField.disabled = false;
+                    responseDiv.style.display = 'none';
+                    responseDiv.innerHTML = '';
+                    askBtn.innerHTML = '<i class="fa-solid fa-terminal"></i> Hackear mi futuro';
+
+                    currentSlide = 0;
+                    showSlide(currentSlide);
+                    return;
+                }
 
                 // Bloquear input y mostrar loader
                 inputField.disabled = true;
@@ -1267,9 +1532,18 @@
                 responseDiv.innerHTML = htmlText;
                 responseDiv.style.display = 'block';
 
-                // Ocultar loader y mostrar botón de reinicio
+                // Ocultar loader
                 loader.style.display = 'none';
-                resetBtn.style.display = 'flex';
+
+                if (attempts === 3 || attempts === 6) {
+                    // Bloquear por 5 minutos
+                    const lockUntil = Date.now() + 5 * 60 * 1000;
+                    localStorage.setItem('geminiLockUntil', lockUntil.toString());
+                    lockUIAndStartCountdown(lockUntil);
+                } else {
+                    // Mostrar botón de reinicio normalmente
+                    resetBtn.style.display = 'flex';
+                }
             });
 
             // Evento para limpiar y reiniciar el simulador
@@ -1289,7 +1563,7 @@
             inputField.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    if (askBtn.style.display !== 'none') {
+                    if (!askBtn.disabled && askBtn.style.display !== 'none') {
                         askBtn.click();
                     }
                 }
